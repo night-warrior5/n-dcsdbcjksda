@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asper - SAT/ACT Prep</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome (Optional) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      /* PRIMARY BRAND COLOR (Adjust to match your logo) */
+      --brand-color: #304ffe;
+      /* SECONDARY ACCENT */
+      --accent-color: #ffca28;
+      /* NEUTRAL COLORS */
+      --light-bg: #fafafa;
+      --dark-text: #333333;
+      --light-text: #555555;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark-text);
+      background-color: var(--light-bg);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #ffffff;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      color: var(--dark-text) !important;
+      text-decoration: none;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .nav-link {
+      color: var(--dark-text) !important;
+      margin-right: 1rem;
+      font-weight: 500;
+    }
+    .btn-signin {
+      background-color: var(--accent-color);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s;
+    }
+    .btn-signin:hover {
+      background-color: #ffc107;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      background: linear-gradient(
+        120deg,
+        var(--brand-color) 30%,
+        #6c63ff 90%
+      );
+      color: #fff;
+      padding: 4rem 1rem;
+      overflow: hidden;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      color: #f5f5f5;
+    }
+    .hero .btn-cta {
+      background-color: #ffca28;
+      color: #333;
+      font-weight: 700;
+      border-radius: 25px;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .hero .btn-cta:hover {
+      background-color: #ffc107;
+      color: #333;
+    }
+    /* OPTIONAL HERO IMAGE/ILLUSTRATION (if you have one) */
+    .hero-img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* FEATURES SECTION */
+    #features {
+      padding: 60px 0;
+      background-color: #ffffff;
+    }
+    #features h2 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    #features p.section-subtitle {
+      color: var(--light-text);
+      margin-bottom: 3rem;
+    }
+    .feature-card {
+      background-color: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+      text-align: left;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
+    .feature-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--brand-color);
+    }
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .feature-card p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+    }
+
+    /* CONTACT / CALL-TO-ACTION SECTION */
+    #contact {
+      padding: 60px 0;
+      background-color: var(--light-bg);
+      text-align: center;
+    }
+    #contact h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    #contact p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: var(--light-text);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #e9ecef;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    footer p, footer a {
+      color: var(--dark-text);
+      font-size: 0.9rem;
+      margin: 0.2rem;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* MODALS */
+    .modal-content {
+      border-radius: 8px;
+    }
+
+    /* RESPONSIVE */
+    @media (min-width: 768px) {
+      .hero {
+        padding: 6rem 2rem;
+      }
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <!-- Replace the src with your actual Asper logo path -->
+        <img src="path/to/asper-logo.png" alt="Asper Logo" />
+        Asper Prep
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-signin ms-3"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Sign In
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between">
+      <!-- Hero Text -->
+      <div class="hero-text mb-4 mb-lg-0">
+        <h1>Ace Your SAT & ACT with Asper</h1>
+        <p>
+          Personalized learning paths, practice exams, expert video lessons, and real-time feedback.
+          Join thousands of students boosting their scores with Asper.
+        </p>
+        <a href="#" class="btn-cta" id="startLearningBtn">Get Started</a>
+      </div>
+      <!-- Optional Hero Image (If you have one) -->
+      <div class="hero-image">
+        <!-- Replace with your own hero image if desired -->
+        <img
+          src="path/to/hero-image.png"
+          alt="Hero Illustration"
+          class="hero-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features">
+    <div class="container">
+      <div class="text-center">
+        <h2>Why Asper?</h2>
+        <p class="section-subtitle">
+          Everything you need to master your next big exam.
+        </p>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4 d-flex">
+          <div class="feature-card flex-fill">
+            <i class="fas fa-pencil-alt"></i>
+            <h3>Full-Length Practice Tests</h3>
+            <p>
+              Simulate real SAT & ACT exams with timed practice tests to boost your confidence.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex">
+          <div class="feature-card flex-fill">
+            <i class="fas fa-video"></i>
+            <h3>Expert Video Lessons</h3>
+            <p>
+              Learn from top instructors and get detailed breakdowns of each topic.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex">
+          <div class="feature-card flex-fill">
+            <i class="fas fa-chart-line"></i>
+            <h3>Personalized Feedback</h3>
+            <p>
+              Advanced analytics identify strengths & weaknesses so you can focus where it matters most.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CALL-TO-ACTION SECTION -->
+  <section id="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p>
+        Need more information about our courses, pricing, or features?  
+        Reach out and we'll be happy to help you succeed.
+      </p>
+      <p class="mb-4">
+        <strong>Email:</strong> 
+        <a href="mailto:info@asperprep.com">info@asperprep.com</a>
+      </p>
+      <!-- Social Links (Optional) -->
+      <p>
+        <a href="#"><i class="fab fa-facebook fa-2x mx-2"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-2x mx-2"></i></a>
+        <a href="#"><i class="fab fa-instagram fa-2x mx-2"></i></a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Asper Prep. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SURVEY MODAL -->
+  <div
+    class="modal fade"
+    id="surveyModal"
+    tabindex="-1"
+    aria-labelledby="surveyModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form id="surveyForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="surveyModalLabel">Getting Started Survey</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Sample Survey Questions -->
+            <div class="mb-3">
+              <label for="q1" class="form-label"
+                >1. Which test are you preparing for?</label
+              >
+              <select id="q1" name="q1" class="form-select" required>
+                <option value="">Select One</option>
+                <option value="sat">SAT</option>
+                <option value="act">ACT</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="q2" class="form-label"
+                >2. How confident are you in your current skills?</label
+              >
+              <select id="q2" name="q2" class="form-select" required>
+                <option value="">Select One</option>
+                <option value="very_confident">Very Confident</option>
+                <option value="confident">Confident</option>
+                <option value="neutral">Neutral</option>
+                <option value="not_confident">Not Confident</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="q3" class="form-label"
+                >3. How many hours per week can you dedicate to prep?</label
+              >
+              <input
+                type="number"
+                id="q3"
+                name="q3"
+                class="form-control"
+                required
+                min="0"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="q4" class="form-label"
+                >4. Which section do you struggle with the most?</label
+              >
+              <select id="q4" name="q4" class="form-select" required>
+                <option value="">Select One</option>
+                <option value="math">Math</option>
+                <option value="reading">Reading</option>
+                <option value="writing">Writing</option>
+                <option value="science">Science (ACT only)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="q5" class="form-label"
+                >5. What is your target score?</label
+              >
+              <input
+                type="number"
+                id="q5"
+                name="q5"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="q6" class="form-label"
+                >6. Have you taken a practice test before?</label
+              >
+              <select id="q6" name="q6" class="form-select" required>
+                <option value="">Select One</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="q7" class="form-label"
+                >7. What score did you achieve (if applicable)?</label
+              >
+              <input type="number" id="q7" name="q7" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="q8" class="form-label"
+                >8. What are your main goals for this prep?</label
+              >
+              <textarea
+                id="q8"
+                name="q8"
+                class="form-control"
+                rows="2"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="q9" class="form-label"
+                >9. Are you interested in personalized feedback?</label
+              >
+              <select id="q9" name="q9" class="form-select" required>
+                <option value="">Select One</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="q10" class="form-label"
+                >10. Any additional comments?</label
+              >
+              <textarea id="q10" name="q10" class="form-control" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit Survey</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN IN MODAL -->
+  <div
+    class="modal fade"
+    id="loginModal"
+    tabindex="-1"
+    aria-labelledby="loginModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Sign In</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOTSTRAP JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- SURVEY & REDIRECTION SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // "Get Started" button
+      const startBtn = document.getElementById("startLearningBtn");
+      startBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Check if user is signed in & survey data is already stored
+        const userSignedIn = localStorage.getItem("userSignedIn") === "true";
+        const surveyData = localStorage.getItem("surveyData");
+
+        if (userSignedIn && surveyData) {
+          // If signed in & survey completed, go directly to test page
+          window.location.href = "test-page.html";
+        } else {
+          // Otherwise, show the survey modal
+          var surveyModal = new bootstrap.Modal(
+            document.getElementById("surveyModal")
+          );
+          surveyModal.show();
+        }
+      });
+
+      // Handle survey form submission
+      document
+        .getElementById("surveyForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const responses = {};
+
+          formData.forEach((value, key) => {
+            responses[key] = value;
+          });
+
+          // Save responses to localStorage (or send to server in real app)
+          localStorage.setItem("surveyData", JSON.stringify(responses));
+
+          // Hide modal and redirect
+          var surveyModal = bootstrap.Modal.getInstance(
+            document.getElementById("surveyModal")
+          );
+          surveyModal.hide();
+          window.location.href = "test-page.html";
+        });
+    });
+  </script>
+</body>
+</html>

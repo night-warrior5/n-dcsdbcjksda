@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Course Details - SAT/ACT Prep Pro</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-blue: #007bff;
+      --secondary-blue: #304ffe;
+      --light-blue: #e3f2fd;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, var(--light-blue), #c3cfe2);
+      margin: 0;
+      padding-top: 56px;
+    }
+    /* Navbar */
+    .navbar {
+      transition: all 0.3s ease;
+      background-color: var(--primary-blue) !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.75rem;
+    }
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: var(--secondary-blue);
+      color: #fff;
+      padding: 1rem;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+    #sidebar.collapsed {
+      transform: translateX(-250px);
+    }
+    #sidebar .sidebar-header {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    #sidebar .list-group-item {
+      background-color: transparent !important;
+      color: #fff !important;
+      border: none;
+      padding: 0.5rem 1rem;
+    }
+    #sidebar .list-group-item:hover,
+    #sidebar .list-group-item.active {
+      background: rgba(255, 255, 255, 0.2) !important;
+    }
+    /* Main Content */
+    #main-content {
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+      padding: 1rem 2rem;
+    }
+    #main-content.full-width {
+      margin-left: 0;
+    }
+    .section-header {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .section-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+    .section-header p {
+      color: #555;
+    }
+    /* Course Section & Cards */
+    .course-section {
+      margin-bottom: 3rem;
+    }
+    .course-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--primary-blue);
+      border-radius: 8px;
+      background-color: #fff;
+      height: 100%;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-blue);
+    }
+    .card-text {
+      color: #555;
+    }
+    .course-meta {
+      margin: 1rem 0;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .badge-difficulty {
+      background: #4CAF50;
+      color: white;
+    }
+    .badge-duration {
+      background: var(--primary-blue);
+      color: white;
+    }
+    /* Footer */
+    footer {
+      background-color: var(--primary-blue);
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    /* Sidebar Toggle Button */
+    #sidebarToggle {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="100" tabindex="0">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <button id="sidebarToggle" class="btn me-2">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="#">SAT/ACT Prep Pro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="test-page.html">Practice Tests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="course-details.html">Course Details</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">Courses</div>
+    <div class="list-group">
+      <a href="#sat" class="list-group-item list-group-item-action">SAT Courses</a>
+      <a href="#act" class="list-group-item list-group-item-action">ACT Courses</a>
+      <a href="#apcalc" class="list-group-item list-group-item-action">AP Calculus</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <header class="section-header">
+      <h1>Course Details</h1>
+      <p>Explore our comprehensive units for SAT, ACT, and AP Calculus preparation.</p>
+    </header>
+
+    <!-- SAT Section -->
+    <section id="sat" class="course-section">
+      <h2 class="mb-4" style="color: var(--primary-blue);">SAT Course Details</h2>
+      <div class="row g-4">
+        <!-- Reading -->
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">SAT Reading Comprehension</h5>
+              <p class="card-text">Literary, historical, and scientific passage analysis</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Advanced</span>
+                <span class="badge badge-duration">8 Weeks</span>
+              </div>
+              <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#satReadingTopics">
+                Learn More
+              </button>
+              <div id="satReadingTopics" class="collapse mt-2">
+                <ul class="list-group">
+                  <li class="list-group-item"><a href="passage-analysis.html" class="text-decoration-none">Passage Analysis</a></li>
+                  <li class="list-group-item"><a href="main-ideas.html" class="text-decoration-none">Main Ideas & Details</a></li>
+                  <li class="list-group-item"><a href="inference-evidence.html" class="text-decoration-none">Inference & Evidence</a></li>
+                  <li class="list-group-item"><a href="vocabulary-context.html" class="text-decoration-none">Vocabulary in Context</a></li>
+                  <li class="list-group-item"><a href="paired-passages.html" class="text-decoration-none">Paired Passages & Data Interpretation</a></li>
+                </ul>
+              </div>              
+            </div>
+          </div>
+        </div>
+        <!-- Writing -->
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">SAT Writing & Language</h5>
+              <p class="card-text">Grammar, rhetoric, and editing practice</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Intermediate</span>
+                <span class="badge badge-duration">6 Weeks</span>
+              </div>
+              <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#satWritingTopics">
+                Learn More
+              </button>
+              <div id="satWritingTopics" class="collapse mt-2">
+                <ul class="list-group">
+                  <li class="list-group-item"><a href="grammar.html" class="text-decoration-none">Grammar & Sentence Structure</a></li>
+                  <li class="list-group-item"><a href="word-choice.html" class="text-decoration-none">Word Choice & Style</a></li>
+                  <li class="list-group-item"><a href="logical-flow.html" class="text-decoration-none">Logical Flow & Transitions</a></li>
+                  <li class="list-group-item"><a href="punctuation.html" class="text-decoration-none">Punctuation Rules</a></li>
+                </ul>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+        <!-- Math -->
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">SAT Mathematics</h5>
+              <p class="card-text">Algebra, geometry, and data analysis</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Advanced</span>
+                <span class="badge badge-duration">10 Weeks</span>
+              </div>
+              <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#satMathTopics">
+                Learn More
+              </button>
+              <div id="satMathTopics" class="collapse mt-2">
+                <ul class="list-group">
+                  <li class="list-group-item"><a href="algebra.html" class="text-decoration-none">Algebra</a></li>
+                  <li class="list-group-item"><a href="problem-solving.html" class="text-decoration-none">Problem Solving & Data Analysis</a></li>
+                  <li class="list-group-item"><a href="advanced-math.html" class="text-decoration-none">Advanced Math</a></li>
+                  <li class="list-group-item"><a href="geometry-trigonometry.html" class="text-decoration-none">Geometry & Trigonometry</a></li>
+                </ul>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+        <!-- New Topics -->
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Argumentative Analysis</h5>
+              <p class="card-text">Rhetorical techniques and logical fallacies</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Advanced</span>
+                <span class="badge badge-duration">4 Weeks</span>
+              </div>
+              <a href="sat-argument.html" class="btn btn-primary mt-2">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Data Interpretation</h5>
+              <p class="card-text">Charts, graphs, and tables analysis</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Intermediate</span>
+                <span class="badge badge-duration">5 Weeks</span>
+              </div>
+              <a href="sat-data.html" class="btn btn-primary mt-2">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Advanced Vocabulary</h5>
+              <p class="card-text">Contextual word meaning mastery</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Intermediate</span>
+                <span class="badge badge-duration">4 Weeks</span>
+              </div>
+              <a href="sat-vocab.html" class="btn btn-primary mt-2">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT Section -->
+    <section id="act" class="course-section">
+      <h2 class="mb-4" style="color: var(--primary-blue);">ACT Course Details</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">ACT Algebra</h5>
+              <p class="card-text">Foundation building for algebraic problem solving.</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Beginner</span>
+                <span class="badge badge-duration">5 Weeks</span>
+              </div>
+              <a href="act-algebra.html" class="btn btn-primary mt-2">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <!-- More ACT cards can be added here -->
+      </div>
+    </section>
+
+    <!-- AP Calculus Section -->
+    <section id="apcalc" class="course-section">
+      <h2 class="mb-4" style="color: var(--primary-blue);">AP Calculus Course Details</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card course-card h-100">
+            <div class="card-body">
+              <h5 class="card-title">AP Calculus AB</h5>
+              <p class="card-text">Explore limits, derivatives, and integrals.</p>
+              <div class="course-meta">
+                <span class="badge badge-difficulty">Advanced</span>
+                <span class="badge badge-duration">12 Weeks</span>
+              </div>
+              <button class="btn btn-primary mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#ApCalcAbTopics">
+                Learn More
+              </button>
+              <div id="apcalc" class="collapse mt-2">
+                <ul class="list-group">
+                  <li class="list-group-item"><a href="passage-analysis.html" class="text-decoration-none">Passage Analysis</a></li>
+                  <li class="list-group-item"><a href="main-ideas.html" class="text-decoration-none">Main Ideas & Details</a></li>
+                  <li class="list-group-item"><a href="inference-evidence.html" class="text-decoration-none">Inference & Evidence</a></li>
+                  <li class="list-group-item"><a href="vocabulary-context.html" class="text-decoration-none">Vocabulary in Context</a></li>
+                  <li class="list-group-item"><a href="paired-passages.html" class="text-decoration-none">Paired Passages & Data Interpretation</a></li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- More AP Calculus cards can be added here -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 SAT/ACT Prep Pro. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("main-content");
+
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+      mainContent.classList.toggle("full-width");
+    });
+  </script>
+</body>
+</html>

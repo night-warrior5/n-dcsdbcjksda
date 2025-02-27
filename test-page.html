@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Select Your Practice Test</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-blue: #007bff;
+      --secondary-blue: #304ffe;
+      --light-blue: #e3f2fd;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, var(--light-blue), #c3cfe2);
+      margin: 0;
+      padding-top: 56px;
+    }
+    /* Navbar */
+    .navbar {
+      background-color: var(--primary-blue) !important;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.75rem;
+    }
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: var(--secondary-blue);
+      color: #fff;
+      padding: 1rem;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+    #sidebar.collapsed {
+      transform: translateX(-250px);
+    }
+    #sidebar .sidebar-header {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    #sidebar .list-group-item {
+      background-color: transparent !important;
+      color: #fff !important;
+      border: none;
+      padding: 0.5rem 1rem;
+    }
+    #sidebar .list-group-item:hover,
+    #sidebar .list-group-item.active {
+      background: rgba(255, 255, 255, 0.2) !important;
+    }
+    /* Main Content */
+    #main-content {
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+      padding: 1rem 2rem;
+    }
+    #main-content.full-width {
+      margin-left: 0;
+    }
+    .section-header {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .section-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+    .section-header p {
+      color: #555;
+    }
+    /* Course Section & Cards */
+    .course-section {
+      margin-bottom: 3rem;
+    }
+    .course-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--primary-blue);
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #fff;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-blue);
+    }
+    .card-text {
+      color: #555;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+    /* Notice Box */
+    .notice {
+      background-color: #ffeb3b;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+    }
+    /* Footer */
+    footer {
+      background-color: var(--primary-blue);
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    /* Sidebar Toggle Button */
+    #sidebarToggle {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="100" tabindex="0">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <button id="sidebarToggle" class="btn me-2">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="#">SAT/ACT Prep Pro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="test-page.html">Practice Tests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="course-details.html">Course Details</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">Tests</div>
+    <div class="list-group">
+      <a href="#sat" class="list-group-item list-group-item-action">SAT Tests</a>
+      <a href="#act" class="list-group-item list-group-item-action">ACT Tests</a>
+      <a href="#full" class="list-group-item list-group-item-action">Full Practice Test</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <div class="notice">
+      After taking a test, you will receive customized feedback and recommended videos to help you improve in areas where you struggled.
+    </div>
+
+    <header class="section-header">
+      <h1>Select Your Practice Test</h1>
+      <p>Choose a test below to start your practice session</p>
+    </header>
+
+    <!-- SAT Tests Section -->
+    <section id="sat" class="course-section">
+      <h2 class="mb-4" style="color: var(--primary-blue);">SAT Practice Tests</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card" onclick="window.location.href='sat-math.html'">
+            <img src="sat-math.jpg" class="card-img-top" alt="SAT Math">
+            <div class="card-body">
+              <h5 class="card-title">SAT Math Practice Test</h5>
+              <p class="card-text">Challenge yourself with a full SAT Math practice test covering all key topics.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card" onclick="window.location.href='sat-reading-writing.html'">
+            <img src="sat-reading.jpg" class="card-img-top" alt="SAT Reading & Writing">
+            <div class="card-body">
+              <h5 class="card-title">SAT Reading & Writing</h5>
+              <p class="card-text">Comprehensive test covering reading comprehension and writing skills.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT Tests Section -->
+    <section id="act" class="course-section">
+      <h2 class="mb-4" style="color: var(--primary-blue);">ACT Practice Tests</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card" onclick="window.location.href='act-math.html'">
+            <img src="act-math.jpg" class="card-img-top" alt="ACT Math">
+            <div class="card-body">
+              <h5 class="card-title">ACT Math Practice Test</h5>
+              <p class="card-text">Full-length math test covering algebra, geometry, and trigonometry.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card" onclick="window.location.href='act-english.html'">
+            <img src="act-english.jpg" class="card-img-top" alt="ACT English">
+            <div class="card-body">
+              <h5 class="card-title">ACT English Practice Test</h5>
+              <p class="card-text">Test your grammar, punctuation, and rhetorical skills.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card" onclick="window.location.href='act-science.html'">
+            <img src="act-science.jpg" class="card-img-top" alt="ACT Science">
+            <div class="card-body">
+              <h5 class="card-title">ACT Science Practice Test</h5>
+              <p class="card-text">Develop your data analysis and scientific reasoning skills.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Practice Test Section -->
+    <section id="full" class="course-section">
+      <h2 class="mb-4" style="color: var(--primary-blue);">Full-Length Practice Tests</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card course-card" onclick="window.location.href='full-practice-test.html'">
+            <img src="full-test.jpg" class="card-img-top" alt="Full Practice Test">
+            <div class="card-body">
+              <h5 class="card-title">Complete SAT/ACT Simulation</h5>
+              <p class="card-text">Full-length timed test covering all sections with detailed analytics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 SAT/ACT Prep Pro. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("main-content");
+
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+      mainContent.classList.toggle("full-width");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAT Math Test Results</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-blue: #007bff;
+      --secondary-blue: #304ffe;
+      --light-blue: #e3f2fd;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--light-blue);
+      color: #333;
+      padding-top: 80px;
+    }
+    /* Navbar using blue color scheme */
+    .navbar {
+      background-color: var(--primary-blue) !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+      font-weight: 700;
+    }
+    /* Result Sections with blue accent */
+    .result-section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-blue);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: var(--primary-blue);
+    }
+    .video-link {
+      margin-left: 10px;
+      color: var(--primary-blue);
+      text-decoration: none;
+    }
+    .video-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">SAT/ACT Prep Pro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+         <ul class="navbar-nav ms-auto">
+           <li class="nav-item"><a class="nav-link" href="test-page.html">Practice Tests</a></li>
+           <li class="nav-item"><a class="nav-link" href="course-details.html">Course Details</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="text-center mb-4">Test Results</h1>
+    <div id="overallResult" class="result-section"></div>
+    <div id="sectionResults" class="result-section"></div>
+    <div id="videoSuggestions" class="result-section">
+      <h3>Review Video Explanations</h3>
+      <ul id="videoList" class="list-group"></ul>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Retrieve stored test data from localStorage.
+    // Expected structure:
+    // {
+    //   responses: { "m1q1": "A", "m1q2": "B", ... },
+    //   quizData: {
+    //     "m1q1": { section: "Module 1", correct: "B", videoLink: "https://example.com/video-m1q1" },
+    //     "m1q2": { section: "Module 1", correct: "A", videoLink: "https://example.com/video-m1q2" },
+    //     ... etc.
+    //   }
+    // }
+    const storedData = JSON.parse(localStorage.getItem('satMathResults'));
+    
+    if (!storedData || !storedData.quizData) {
+      document.getElementById('overallResult').innerHTML = "<p>No test data found. Please take the test first.</p>";
+    } else {
+      const responses = storedData.responses || {};
+      const quizData = storedData.quizData;
+      
+      // Initialize an object to accumulate results per section.
+      const results = {}; // { sectionName: { correct, total, wrong: [questionId, ...] } }
+      let overallCorrect = 0, overallTotal = 0;
+      
+      // Loop over each question in quizData (no matter how many there are)
+      for (const qid in quizData) {
+        const question = quizData[qid];
+        const section = question.section || "General";
+        if (!results[section]) {
+          results[section] = { correct: 0, total: 0, wrong: [] };
+        }
+        results[section].total++;
+        overallTotal++;
+        const userAnswer = responses[qid];
+        if (userAnswer === question.correct) {
+          results[section].correct++;
+          overallCorrect++;
+        } else {
+          results[section].wrong.push(qid);
+        }
+      }
+      
+      // Compute overall estimated SAT score.
+      // For simplicity, a linear conversion: 0% => 200, 100% => 800.
+      const overallPercentage = overallTotal ? (overallCorrect / overallTotal) * 100 : 0;
+      const overallEstimatedScore = Math.round(200 + (overallPercentage * 6));
+      
+      // Display overall results.
+      const overallHTML = `
+        <h2>Overall Estimated SAT Math Score: ${overallEstimatedScore}</h2>
+        <p>You answered ${overallCorrect} out of ${overallTotal} questions correctly (${Math.round(overallPercentage)}%).</p>
+      `;
+      document.getElementById('overallResult').innerHTML = overallHTML;
+      
+      // Display section-by-section breakdown.
+      let sectionHTML = '<h3>Section Scores</h3>';
+      for (const section in results) {
+        const data = results[section];
+        const percent = data.total ? Math.round((data.correct / data.total) * 100) : 0;
+        // Estimate section score using the same conversion.
+        const sectionScore = Math.round(200 + (percent * 6));
+        sectionHTML += `<p><strong>${section}:</strong> ${data.correct} of ${data.total} correct (${percent}%) – Estimated Score: ${sectionScore}</p>`;
+      }
+      document.getElementById('sectionResults').innerHTML = sectionHTML;
+      
+      // Build video suggestions for questions answered incorrectly.
+      // This loop will work regardless of how many wrong answers there are.
+      const videoList = document.getElementById('videoList');
+      videoList.innerHTML = "";
+      let videosFound = false;
+      for (const section in results) {
+        const data = results[section];
+        data.wrong.forEach(qid => {
+          videosFound = true;
+          // Use the videoLink from quizData; if not provided, default to a placeholder.
+          const videoURL = quizData[qid].videoLink || '#';
+          const listItem = document.createElement('li');
+          listItem.className = 'list-group-item';
+          listItem.innerHTML = `Question ${qid} (${section}) – <a class="video-link" href="${videoURL}" target="_blank">Watch Explanation</a>`;
+          videoList.appendChild(listItem);
+        });
+      }
+      if (!videosFound) {
+        videoList.innerHTML = "<li class='list-group-item'>Great job! No review videos are needed.</li>";
+      }
+    }
+  </script>
+</body>
+</html>

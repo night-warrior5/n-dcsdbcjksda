@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAT Math Practice Test</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-blue: #007bff;
+      --light-blue: #e3f2fd;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-blue);
+      color: #333;
+      padding-top: 80px;
+    }
+    .navbar {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: var(--primary-blue);
+    }
+    .question-card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-blue);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .question-card:hover {
+      transform: scale(1.02);
+    }
+    .form-check-label {
+      margin-left: 5px;
+    }
+    .container {
+      max-width: 800px;
+    }
+    button.btn-primary {
+      background-color: var(--primary-blue);
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">SAT/ACT Prep Pro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+         <ul class="navbar-nav ms-auto">
+           <li class="nav-item"><a class="nav-link" href="test-page.html">Practice Tests</a></li>
+           <li class="nav-item"><a class="nav-link" href="course-details.html">Course Details</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="text-center mb-4">SAT Math Practice Test</h1>
+    <form id="testForm">
+      
+      <!-- Module 1: No Calculator -->
+      <h2>Module 1: No Calculator</h2>
+      
+      <!-- Question 1 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>1. A group of students voted on five after-school activities. The bar graph shows the number of students who voted for each activity. How many students chose activity 3?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q1" id="m1q1a" value="A">
+          <label class="form-check-label" for="m1q1a">A) 25</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q1" id="m1q1b" value="B">
+          <label class="form-check-label" for="m1q1b">B) 39</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q1" id="m1q1c" value="C">
+          <label class="form-check-label" for="m1q1c">C) 48</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q1" id="m1q1d" value="D">
+          <label class="form-check-label" for="m1q1d">D) 50</label>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>2. What percentage of 300 is 75?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q2" id="m1q2a" value="A">
+          <label class="form-check-label" for="m1q2a">A) 25%</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q2" id="m1q2b" value="B">
+          <label class="form-check-label" for="m1q2b">B) 50%</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q2" id="m1q2c" value="C">
+          <label class="form-check-label" for="m1q2c">C) 75%</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q2" id="m1q2d" value="D">
+          <label class="form-check-label" for="m1q2d">D) 225%</label>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>3. Solve for x: 2x = 36/25. What is a solution to the equation?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q3" id="m1q3a" value="A">
+          <label class="form-check-label" for="m1q3a">A) 6</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q3" id="m1q3b" value="B">
+          <label class="form-check-label" for="m1q3b">B) 30</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q3" id="m1q3c" value="C">
+          <label class="form-check-label" for="m1q3c">C) 450</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q3" id="m1q3d" value="D">
+          <label class="form-check-label" for="m1q3d">D) 900</label>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>4. Three more than 8 times a number x is equal to 83. Which equation represents this situation?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q4" id="m1q4a" value="A">
+          <label class="form-check-label" for="m1q4a">A) 8x + 3 = 83</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q4" id="m1q4b" value="B">
+          <label class="form-check-label" for="m1q4b">B) 8x = 83 + 3</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q4" id="m1q4c" value="C">
+          <label class="form-check-label" for="m1q4c">C) x = 3 + 8(83)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q4" id="m1q4d" value="D">
+          <label class="form-check-label" for="m1q4d">D) x = 8 + 3(83)</label>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>5. Hana deposited a fixed amount into her bank account each month. The function f(t)=100+25t gives the amount in dollars after t deposits. What is the best interpretation of 25?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q5" id="m1q5a" value="A">
+          <label class="form-check-label" for="m1q5a">A) With each deposit, the account increases by $25.</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q5" id="m1q5b" value="B">
+          <label class="form-check-label" for="m1q5b">B) The account had $25 before any deposits.</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q5" id="m1q5c" value="C">
+          <label class="form-check-label" for="m1q5c">C) After one deposit, the account was $25.</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q5" id="m1q5d" value="D">
+          <label class="form-check-label" for="m1q5d">D) Hana made 25 deposits.</label>
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>6. A customer spent $27 to purchase oranges at $3 per pound. How many pounds of oranges did the customer purchase?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q6" id="m1q6a" value="A">
+          <label class="form-check-label" for="m1q6a">A) 7</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q6" id="m1q6b" value="B">
+          <label class="form-check-label" for="m1q6b">B) 8</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q6" id="m1q6c" value="C">
+          <label class="form-check-label" for="m1q6c">C) 9</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q6" id="m1q6d" value="D">
+          <label class="form-check-label" for="m1q6d">D) 10</label>
+        </div>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question-card" data-section="Module 1">
+        <p><strong>7. Nasir bought 9 storage bins at the same price. After using a $63 coupon, the total cost was $27. What was the original price for one bin?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q7" id="m1q7a" value="A">
+          <label class="form-check-label" for="m1q7a">A) $8</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q7" id="m1q7b" value="B">
+          <label class="form-check-label" for="m1q7b">B) $9</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q7" id="m1q7c" value="C">
+          <label class="form-check-label" for="m1q7c">C) $10</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m1q7" id="m1q7d" value="D">
+          <label class="form-check-label" for="m1q7d">D) $11</label>
+        </div>
+      </div>
+
+      <!-- … Continue adding Module 1 questions (8 through 27) in the same structure … -->
+      
+      <!-- Module 2: Calculator -->
+      <h2>Module 2: Calculator</h2>
+      
+      <!-- Question 1 (Module 2) -->
+      <div class="question-card" data-section="Module 2">
+        <p><strong>1. Based on the line graph of chipmunk counts from 1989–1999, in which year was the number greatest?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q1" id="m2q1a" value="A">
+          <label class="form-check-label" for="m2q1a">A) 1989</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q1" id="m2q1b" value="B">
+          <label class="form-check-label" for="m2q1b">B) 1994</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q1" id="m2q1c" value="C">
+          <label class="form-check-label" for="m2q1c">C) 1995</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q1" id="m2q1d" value="D">
+          <label class="form-check-label" for="m2q1d">D) 1998</label>
+        </div>
+      </div>
+
+      <!-- Question 2 (Module 2) -->
+      <div class="question-card" data-section="Module 2">
+        <p><strong>2. A fish swam 5,104 yards. How many miles did it swim? (1 mile = 1,760 yards)</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q2" id="m2q2a" value="A">
+          <label class="form-check-label" for="m2q2a">A) 0.3</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q2" id="m2q2b" value="B">
+          <label class="form-check-label" for="m2q2b">B) 2.9</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q2" id="m2q2c" value="C">
+          <label class="form-check-label" for="m2q2c">C) 3,344</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q2" id="m2q2d" value="D">
+          <label class="form-check-label" for="m2q2d">D) 6,864</label>
+        </div>
+      </div>
+
+      <!-- Question 3 (Module 2) -->
+      <div class="question-card" data-section="Module 2">
+        <p><strong>3. Which expression is equivalent to 3·12x³ − 5x?</strong></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q3" id="m2q3a" value="A">
+          <label class="form-check-label" for="m2q3a">A) 7x⁶</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q3" id="m2q3b" value="B">
+          <label class="form-check-label" for="m2q3b">B) 17x³</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q3" id="m2q3c" value="C">
+          <label class="form-check-label" for="m2q3c">C) 7x³</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="m2q3" id="m2q3d" value="D">
+          <label class="form-check-label" for="m2q3d">D) 17x⁶</label>
+        </div>
+      </div>
+      
+      <!-- … Continue adding remaining Module 2 questions (4 through 28) in the same structure … -->
+      
+      <button type="submit" class="btn btn-primary mt-4">Submit Test</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Example: On submit, gather responses, store them, and redirect.
+    document.getElementById('testForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Gather responses
+      const formData = new FormData(this);
+      const responses = {};
+      for (let [key, value] of formData.entries()) {
+        responses[key] = value;
+      }
+      
+      // Define your quizData object with your questions, correct answers, etc.
+      // (Make sure this object includes every question's details.)
+      const quizData = {
+        // Example for Module 1 questions:
+        "m1q1": { section: "Module 1", correct: "B", videoLink: "https://example.com/video-m1q1" },
+        "m1q2": { section: "Module 1", correct: "A", videoLink: "https://example.com/video-m1q2" },
+        "m1q3": { section: "Algebra 1", correct: "A", videoLink: "https://example.com/video-m1q3" },
+        // ... add all other questions similarly ...
+        // For Module 2:
+        "m2q1": { section: "Module 2", correct: "C", videoLink: "https://example.com/video-m2q1" },
+        "m2q2": { section: "Module 2", correct: "B", videoLink: "https://example.com/video-m2q2" }
+        // ... continue for all questions
+      };
+
+      // Store both responses and quizData in localStorage.
+      const resultsData = { responses, quizData };
+      localStorage.setItem('satMathResults', JSON.stringify(resultsData));
+      
+      // Redirect to the results page.
+      window.location.href = 'sat-math-results.html';
+    });
+  </script>
+</body>
+</html>
